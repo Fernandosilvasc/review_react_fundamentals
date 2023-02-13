@@ -4,12 +4,6 @@
   gap: 1rem;
 }
 
-.comment > img {
-  width: 3rem; /* 12px = (border = 4px + 4px) + (outline = 2px + 2px) */
-  height: 3rem;
-  border-radius: 8px;
-}
-
 .commentContent {
   background: var(--gray-700);
   border-radius: 8px;

@@ -1,13 +1,15 @@
-import {Comment} from './Comment'
-import styles from './Post.module.css'
+import {Comment} from './Comment';
+import styles from './Post.module.css';
+import {Avatar} from './Avatar';
 
 export function Post() {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img className={styles.avatar}
-            src="https://avatars.githubusercontent.com/u/58282921?v=4" alt="Avatar - Fernando Silva"
+          <Avatar
+            src="https://avatars.githubusercontent.com/u/58282921?v=4"
+            alt="Avatar - Fernando Silva"
           />
           <div className={styles.authorInfo}>
             <strong>Fernando Correa da Silva</strong>
@@ -36,7 +38,7 @@ export function Post() {
 
       <form className={styles.commentForm}>
         <strong>Give us your feedback:</strong>
-        <textarea placeholder='Leave your comment here!'/>
+        <textarea placeholder='Leave your comment here!' />
         <footer>
           <button type="submit">Publish</button>
         </footer>
