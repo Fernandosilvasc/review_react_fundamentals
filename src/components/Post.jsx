@@ -1,38 +1,55 @@
-import {Comment} from './Comment';
-import styles from './Post.module.css';
-import {Avatar} from './Avatar';
+import {format, formatDistanceToNow} from 'date-fns';
 
-export function Post() {
+import {Avatar} from './Avatar';
+import {Comment} from './Comment';
+
+import styles from './Post.module.css';
+
+export function Post({author, content, publishedAt}) {
+  const publishedDateFormatted = format(publishedAt, "LLLL d 'at' HH:mm'h'");
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {addSuffix: true})
+  const hashTags = content.filter(item => item.type === 'hashtags');
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
           <Avatar
-            src="https://avatars.githubusercontent.com/u/58282921?v=4"
-            alt="Avatar - Fernando Silva"
+            src={author.avatarUrl}
+            alt={`Avatar - ${author.name}`}
           />
           <div className={styles.authorInfo}>
-            <strong>Fernando Correa da Silva</strong>
-            <span>FullStack Engineer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
         <time
-          title="February 7 at 09:40pm"
-          dateTime="February 7 at 09:40"
+          title={publishedDateFormatted}
+          dateTime={publishedAt.toISOString()}
         >
-          Published at 1hr ago
+          {publishedDateRelativeToNow}
         </time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa 👋</p>
-        <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-        <a href="#">👉 jane.design/doctorcare</a>
+        {content.map((contentItem, index) => {
+          if (contentItem.type === 'paragraph') {
+            return (
+              <p key={index}>{contentItem.data}</p>
+            )
+          } else if (contentItem.type === 'anchor') {
+            return (
+              <a href="#" key={index}>{contentItem.data}</a>
+            )
+          }
+        })}
         <p>
-          <a href="#">#novoprojeto</a>
-          <a href="#">#nlw</a>
-          <a href="#">#rocketseat</a>
+          {
+            hashTags[0].data.map((hashTag, index) => (
+              <a href="#" key={index}>{hashTag}</a>
+            ))
+          }
         </p>
       </div>
 
