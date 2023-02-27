@@ -8,13 +8,37 @@ export const posts = [
       role: 'FullStack Engineer'
     },
     content: [
-      {type: 'paragraph', data: 'Hey Folks 👋'},
       {
+        id: uuid(),
+        type: 'paragraph',
+        data: 'Hey Folks 👋'
+      },
+      {
+        id: uuid(),
         type: 'paragraph',
         data: "I just want to share that I uploaded another project to my portfolio. It's a project that I did at NLW Return, a Rocketseat event. Project name is DoctorCare 🚀"
       },
-      {type: 'anchor', data: '👉 jane.design/doctorcare'},
-      {type: 'hashtags', data: ['#newproject', '#nlw', '#itbrcanada']}
+      {
+        id: uuid(),
+        type: 'anchor',
+        data: '👉 jane.design/doctorcare'
+      },
+      {
+        type: 'hashtags', data: [
+          {
+            id: uuid(),
+            hashTag: '#newproject'
+          },
+          {
+            id: uuid(),
+            hashTag: '#nlw'
+          },
+          {
+            id: uuid(),
+            hashTag: '#itbrcanada'
+          },
+        ]
+      }
     ],
     publishedAt: new Date('02-10-2023 18:00:00')
   },
@@ -26,13 +50,37 @@ export const posts = [
       role: 'FullStack Engineer'
     },
     content: [
-      {type: 'paragraph', data: 'Hey Folks 👋'},
       {
+        id: uuid(),
+        type: 'paragraph',
+        data: 'Hey Folks 👋'
+      },
+      {
+        id: uuid(),
         type: 'paragraph',
         data: "I just want to share that I uploaded another project to my portfolio. It's a project that I did at NLW Return, a Rocketseat event. Project name is DoctorCare 🚀"
       },
-      {type: 'anchor', data: '👉 jane.design/doctorcare'},
-      {type: 'hashtags', data: ['#newproject', '#nlw', '#itbrcanada']}
+      {
+        id: uuid(),
+        type: 'anchor',
+        data: '👉 jane.design/doctorcare'
+      },
+      {
+        type: 'hashtags', data: [
+          {
+            id: uuid(),
+            hashTag: '#newproject'
+          },
+          {
+            id: uuid(),
+            hashTag: '#nlw'
+          },
+          {
+            id: uuid(),
+            hashTag: '#itbrcanada'
+          },
+        ]
+      }
     ],
     publishedAt: new Date('02-13-2023 14:00:00')
   }
