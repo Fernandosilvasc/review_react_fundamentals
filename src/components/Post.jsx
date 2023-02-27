@@ -17,7 +17,7 @@ export function Post({author, content, publishedAt}) {
   function handleCreateNewComment() {
     event.preventDefault();
     setComments([...comments, newCommentText]);
-    setNewCommentText('')    
+    setNewCommentText({id: uuid(), text: ''})
   }
 
   function handleNewCommentChange() {
@@ -25,6 +25,10 @@ export function Post({author, content, publishedAt}) {
       id: uuid(),
       text: event.target.value
     });
+  }
+
+  function deleteComment(comment) {
+    setComments(() => comments.filter((item) => item.id !== comment.id))
   }
 
   return (
@@ -84,7 +88,13 @@ export function Post({author, content, publishedAt}) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment key={comment.id} content={comment.text} />
+          return (
+            <Comment
+              key={comment.id}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
+          )
         })}
       </div>
     </article>
