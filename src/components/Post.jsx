@@ -50,21 +50,21 @@ export function Post({author, content, publishedAt}) {
       </header>
 
       <div className={styles.content}>
-        {content.map((contentItem, index) => {
-          if (contentItem.type === 'paragraph') {
+        {content.map((item) => {
+          if (item.type === 'paragraph') {
             return (
-              <p key={index}>{contentItem.data}</p>
+              <p key={item.id}>{item.data}</p>
             )
-          } else if (contentItem.type === 'anchor') {
+          } else if (item.type === 'anchor') {
             return (
-              <a href="#" key={index}>{contentItem.data}</a>
+              <a href="#" key={item.id}>{item.data}</a>
             )
           }
         })}
         <p>
           {
-            hashTags[0].data.map((hashTag, index) => (
-              <a href="#" key={index}>{hashTag}</a>
+            hashTags[0].data.map((item) => (
+              <a href="#" key={item.id}>{item.hashTag}</a>
             ))
           }
         </p>
